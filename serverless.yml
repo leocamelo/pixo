@@ -1,0 +1,29 @@
+service: pixo
+
+provider:
+  name: aws
+  runtime: python3.7
+  region: ${env:AWS_REGION, 'us-east-1'}
+
+# you can define service wide environment variables here
+# environment:
+#   variable1: value1
+
+package:
+  exclude:
+    - venv/**
+
+functions:
+  index:
+    handler: handler.index
+    events:
+      - http:
+          path: /index.json
+          method: get
+
+  perform:
+    handler: handler.perform
+    events:
+      - http:
+          path: /{image}
+          method: get
