@@ -1,0 +1,10 @@
+{
+  "base": "image.jpg",
+  "tags": {
+    "text": {
+      "size": 12,
+      "font": "lato",
+      "color": "#000000"
+    }
+  }
+}

@@ -18,12 +18,19 @@ functions:
     handler: handler.index
     events:
       - http:
-          path: /index.json
+          path: api
+          method: get
+
+  show:
+    handler: handler.show
+    events:
+      - http:
+          path: api/{id}
           method: get
 
   perform:
     handler: handler.perform
     events:
       - http:
-          path: /{image}
+          path: image/{id}
           method: get

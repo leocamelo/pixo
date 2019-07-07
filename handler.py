@@ -1,29 +1,25 @@
 from json import dumps
 
+from pixo import get_images, find_image, perform_image
+
+
+def _response(status, body):
+    return {'statusCode': status, 'body': dumps(body)}
+
 
 def index(event, context):
-    body = {
-        'message': 'library here',
-        'event': event
-    }
+    return _response(200, {'images': get_images()})
 
-    response = {
-        'statusCode': 200,
-        'body': dumps(body)
-    }
 
-    return response
+def show(event, context):
+    key = event['pathParameters']['key']
+    return _response(200, {'image': find_image(key)})
 
 
 def perform(event, context):
-    body = {
-        'message': 'awesome image here',
-        'event': event
-    }
+    key = event['pathParameters']['key']
 
-    response = {
-        'statusCode': 200,
-        'body': dumps(body)
-    }
-
-    return response
+    try:
+        return _response(200, {'image': perform_image(key)})
+    except ValueError as err:
+        return _response(422, {'message': str(err)})
