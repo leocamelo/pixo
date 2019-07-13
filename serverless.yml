@@ -5,10 +5,6 @@ provider:
   runtime: python3.7
   region: ${env:AWS_REGION, 'us-east-1'}
 
-# you can define service wide environment variables here
-# environment:
-#   variable1: value1
-
 package:
   exclude:
     - venv/**
@@ -25,12 +21,12 @@ functions:
     handler: handler.show
     events:
       - http:
-          path: api/{id}
+          path: api/{key}
           method: get
 
   perform:
     handler: handler.perform
     events:
       - http:
-          path: image/{id}
+          path: image/{key}
           method: get

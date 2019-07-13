@@ -1,4 +1,4 @@
-from pixo import __version__, get_images, find_image
+from pixo import __version__, get_images, find_image, perform_image
 
 
 example = 'paper1'
@@ -32,4 +32,7 @@ def test_find_image():
 
 
 def test_perform_image():
-    assert 1 == 1
+    image, mime = perform_image(example)
+
+    assert image is not None
+    assert mime == 'jpeg'
