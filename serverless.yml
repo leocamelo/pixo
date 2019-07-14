@@ -8,6 +8,12 @@ provider:
 package:
   exclude:
     - venv/**
+    - tests/**
+
+custom:
+  pythonRequirements:
+    pythonBin: python3
+    dockerizePip: true
 
 functions:
   index:
@@ -30,3 +36,6 @@ functions:
       - http:
           path: image/{key}
           method: get
+
+plugins:
+  - serverless-python-requirements
