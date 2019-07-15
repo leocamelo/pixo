@@ -4,6 +4,9 @@ provider:
   name: aws
   runtime: python3.7
   region: ${env:AWS_REGION, 'us-east-1'}
+  apiGateway:
+    binaryMediaTypes:
+      - '*/*'
 
 package:
   exclude:

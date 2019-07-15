@@ -35,4 +35,4 @@ class Pix:
         buffered = BytesIO()
         image.save(buffered, self.mime().upper())
 
-        return b64encode(buffered.getvalue())
+        return b64encode(buffered.getvalue()).decode('utf-8')

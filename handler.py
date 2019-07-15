@@ -3,8 +3,9 @@ from json import dumps
 from pixo import get_images, find_image, perform_image
 
 
-def _response(status, body, extras={}):
-    return {'statusCode': status, 'body': dumps(body), **extras}
+def _response(status_code, body, extras={}):
+    parsed_body = dumps(body) if type(body) is dict else body
+    return {'statusCode': status_code, 'body': parsed_body, **extras}
 
 
 def index(event, context):
@@ -22,9 +23,7 @@ def perform(event, context):
     try:
         image, mime = perform_image(key)
         return _response(200, image, {
-            'headers': {
-                'Content-Type': 'image/{}'.format(mime)
-            },
+            'headers': {'Content-Type': 'image/{}'.format(mime)},
             'isBase64Encoded': True
         })
     except ValueError as err:
