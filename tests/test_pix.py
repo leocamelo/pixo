@@ -9,9 +9,13 @@ def test_as_json():
         'base': 'image.jpg',
         'tags': {
             'text': {
-                'size': 12,
-                'font': 'lato',
-                'color': '#000000'
+                'size': 34,
+                'font': 'Arial',
+                'color': '#333333',
+                'position': {
+                    'x': 526,
+                    'y': 360
+                }
             }
         }
     }

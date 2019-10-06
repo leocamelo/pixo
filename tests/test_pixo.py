@@ -32,7 +32,7 @@ def test_find_image():
 
 
 def test_perform_image():
-    image, mime = perform_image(example)
+    image, mime = perform_image(example, params={})
 
     assert image is not None
     assert mime == 'jpeg'

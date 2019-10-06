@@ -19,9 +19,11 @@ def show(event, context):
 
 def perform(event, context):
     key = event['pathParameters']['key']
+    params = event['queryStringParameters']
 
     try:
-        image, mime = perform_image(key)
+        image, mime = perform_image(key, params)
+
         return _response(200, image, {
             'headers': {'Content-Type': 'image/{}'.format(mime)},
             'isBase64Encoded': True

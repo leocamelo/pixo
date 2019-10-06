@@ -27,7 +27,7 @@ def find_image(key):
     return _image(key).as_json()
 
 
-def perform_image(key):
+def perform_image(key, params):
     image = _image(key)
 
-    return image.perform(_library()), image.mime()
+    return image.perform(_library(), params), image.mime()
