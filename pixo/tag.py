@@ -12,14 +12,6 @@ class Tag:
         self.x = meta['position']['x']
         self.y = meta['position']['y']
 
-        self.__ttf = None
-
-    @ property
-    def ttf(self):
-        if not self.__ttf:
-            self.__ttf = ImageFont.truetype(self.font, self.size)
-        return self.__ttf
-
     def as_json(self):
         return {
             'key': self.key,
@@ -32,6 +24,11 @@ class Tag:
             }
         }
 
-    def position(self, text):
-        w, h = self.ttf.getsize(text)
-        return (self.x - (w // 2), self.y - (h // 2))
+    def read_font(self, path, text):
+        font = ImageFont.truetype(str(path / self.font), self.size)
+
+        w, h = font.getsize(text)
+        x = self.x - (w // 2)
+        y = self.y - (h // 2)
+
+        return (font, (x, y))

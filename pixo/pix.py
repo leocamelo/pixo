@@ -29,14 +29,15 @@ class Pix:
             raise ValueError('Extension not supported: {}'.format(suffix))
 
     def perform(self, library, params):
-        path = library / self.key / self.base
+        path = library / self.key
 
-        image = Image.open(path)
+        image = Image.open(path / self.base)
         draw = ImageDraw.Draw(image)
 
         for tag in self.tags:
             text = params.get(tag.key, '')
-            draw.text(tag.position(text), text, tag.color, tag.ttf)
+            font, xy = tag.read_font(path, text)
+            draw.text(xy, text, tag.color, font)
 
         buffered = BytesIO()
         image.save(buffered, self.mime().upper())
