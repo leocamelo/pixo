@@ -19,7 +19,7 @@ def show(event, context):
 
 def perform(event, context):
     key = event['pathParameters']['key']
-    params = event['queryStringParameters']
+    params = event['queryStringParameters'] or {}
 
     try:
         image, mime = perform_image(key, params)
