@@ -20,6 +20,8 @@ custom:
 
 functions:
   index:
+    name: ${self:service}-api-index
+    description: List library images
     handler: handler.index
     events:
       - http:
@@ -27,6 +29,8 @@ functions:
           method: get
 
   show:
+    name: ${self:service}-api-show
+    description: Show image specs
     handler: handler.show
     events:
       - http:
@@ -34,6 +38,8 @@ functions:
           method: get
 
   perform:
+    name: ${self:service}-image
+    description: Perform image tags
     handler: handler.perform
     events:
       - http:
