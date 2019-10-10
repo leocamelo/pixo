@@ -1,11 +1,13 @@
+import json
 from setuptools import setup, find_packages
 
-from pixo import __version__
+with open('package.json') as f:
+    package = json.load(f)
 
 setup(
-    name='pixo',
-    version=__version__,
-    description='Draw tags over your photos',
+    name=package['name'],
+    version=package['version'],
+    description=package['description'],
     author='@leocamelo',
     author_email='leonardocamelo.nave@gmail.com',
     url='https://github.com/leocamelo/pixo',

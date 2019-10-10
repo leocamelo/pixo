@@ -21,6 +21,7 @@ class Pix:
 
     def mime(self):
         suffix = self.base.suffix
+
         if suffix == '.png':
             return 'png'
         elif suffix in ('.jpg', '.jpeg'):

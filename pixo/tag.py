@@ -24,8 +24,9 @@ class Tag:
             }
         }
 
-    def read_font(self, path, text):
-        font = ImageFont.truetype(str(path / self.font), self.size)
+    def read_font(self, folder, text):
+        path = str(folder / self.font)
+        font = ImageFont.truetype(path, self.size)
 
         w, h = font.getsize(text)
         x = self.x - (w // 2)

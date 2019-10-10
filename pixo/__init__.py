@@ -1,10 +1,11 @@
+import json
 from pathlib import Path
-from json import load
 
 from .pix import Pix
 
 
-__version__ = '0.1.0'
+with open('package.json') as f:
+    __version__ = json.load(f)['version']
 
 
 def _library():
@@ -15,12 +16,11 @@ def _image(key):
     metafile = _library() / key / 'meta.json'
 
     with metafile.open() as f:
-        return Pix(key, load(f))
+        return Pix(key, json.load(f))
 
 
 def get_images():
-    return [{'key': i.name}
-            for i in _library().iterdir() if i.is_dir()]
+    return [{'key': i.name} for i in _library().iterdir() if i.is_dir()]
 
 
 def find_image(key):
