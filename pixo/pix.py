@@ -2,7 +2,7 @@ from io import BytesIO
 from base64 import b64encode
 from pathlib import PurePath
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 
 from .tag import Tag
 
@@ -12,6 +12,16 @@ class Pix:
         self.key = key
         self.base = PurePath(meta['base'])
         self.tags = [Tag(k, v) for k, v in meta['tags'].items()]
+
+    def __read_tag(self, folder, tag, text):
+        path = str(folder / tag.font)
+        font = ImageFont.truetype(path, tag.size)
+
+        w, h = font.getsize(text)
+        x = tag.x - (w // 2)
+        y = tag.y - (h // 2)
+
+        return (font, (x, y))
 
     def as_json(self):
         return {
@@ -30,14 +40,14 @@ class Pix:
             raise ValueError('Extension not supported: {}'.format(suffix))
 
     def perform(self, library, params):
-        path = library / self.key
+        folder = library / self.key
 
-        image = Image.open(path / self.base)
+        image = Image.open(folder / self.base)
         draw = ImageDraw.Draw(image)
 
         for tag in self.tags:
             text = params.get(tag.key, '')
-            font, xy = tag.read_font(path, text)
+            font, xy = self.__read_tag(folder, tag, text)
             draw.text(xy, text, tag.color, font)
 
         buffered = BytesIO()

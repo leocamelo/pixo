@@ -10,7 +10,7 @@ def test_as_json():
         'tags': {
             'text': {
                 'size': 34,
-                'font': 'Arial',
+                'font': 'indieflower.ttf',
                 'color': '#333333',
                 'position': {
                     'x': 526,

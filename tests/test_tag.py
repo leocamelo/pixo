@@ -5,7 +5,7 @@ def test_as_json():
     key = 'text'
     meta = {
         'size': 34,
-        'font': 'Arial',
+        'font': 'indieflower.ttf',
         'color': '#333333',
         'position': {
             'x': 526,

@@ -23,13 +23,3 @@ class Tag:
                 'y': self.y
             }
         }
-
-    def read_font(self, folder, text):
-        path = str(folder / self.font)
-        font = ImageFont.truetype(path, self.size)
-
-        w, h = font.getsize(text)
-        x = self.x - (w // 2)
-        y = self.y - (h // 2)
-
-        return (font, (x, y))
