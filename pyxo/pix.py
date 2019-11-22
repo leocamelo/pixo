@@ -22,6 +22,14 @@ class Pix:
 
         return (font, (x, y))
 
+    def __draw_tags(self, folder, image, params):
+        draw = ImageDraw.Draw(image)
+
+        for tag in self.tags:
+            text = params.get(tag.key, '')
+            font, xy = self.__read_tag(folder, tag, text)
+            draw.text(xy, text, tag.color, font)
+
     def as_json(self):
         return {
             'key': self.key,
@@ -42,12 +50,7 @@ class Pix:
         folder = library / self.key
 
         image = Image.open(folder / self.base)
-        draw = ImageDraw.Draw(image)
-
-        for tag in self.tags:
-            text = params.get(tag.key, '')
-            font, xy = self.__read_tag(folder, tag, text)
-            draw.text(xy, text, tag.color, font)
+        self.__draw_tags(folder, image, params)
 
         buffered = BytesIO()
         image.save(buffered, self.mime().upper())
