@@ -22,7 +22,7 @@ functions:
   index:
     name: ${self:service}-api-index
     description: List library images
-    handler: handler.index
+    handler: serverless.index
     events:
       - http:
           path: api
@@ -31,7 +31,7 @@ functions:
   show:
     name: ${self:service}-api-show
     description: Show image specs
-    handler: handler.show
+    handler: serverless.show
     events:
       - http:
           path: api/{key}
@@ -40,7 +40,7 @@ functions:
   perform:
     name: ${self:service}-image
     description: Perform image tags
-    handler: handler.perform
+    handler: serverless.perform
     events:
       - http:
           path: image/{key}

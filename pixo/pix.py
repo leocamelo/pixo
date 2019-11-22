@@ -1,5 +1,4 @@
 from io import BytesIO
-from base64 import b64encode
 from pathlib import PurePath
 
 from PIL import Image, ImageDraw, ImageFont
@@ -53,4 +52,4 @@ class Pix:
         buffered = BytesIO()
         image.save(buffered, self.mime().upper())
 
-        return b64encode(buffered.getvalue()).decode('utf-8')
+        return buffered.getvalue()

@@ -1,4 +1,5 @@
 import json
+from base64 import b64encode
 
 from pixo import get_images, find_image, perform_image
 
@@ -23,7 +24,8 @@ def perform(event, context):
 
     try:
         image, mime = perform_image(key, params)
+        image64 = b64encode(image).decode('utf-8')
         headers = {'Content-Type': 'image/{}'.format(mime)}
-        return _response(200, image, headers=headers, isBase64Encoded=True)
+        return _response(200, image64, headers=headers, isBase64Encoded=True)
     except ValueError as err:
         return _response(422, {'message': str(err)})
