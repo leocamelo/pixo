@@ -1,10 +1,14 @@
+from os import getenv
 from flask import Flask, request, jsonify, make_response
 
 from pyxo import get_images, find_image, perform_image
 
 
 app = Flask(__name__)
-app.config.from_mapping(SECRET_KEY='Z1ON0101')
+
+app.config.from_mapping(
+    SECRET_KEY=getenv('SECRET_KEY', 'Z1ON0101')
+)
 
 
 @app.route('/api')
