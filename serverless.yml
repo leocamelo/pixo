@@ -21,11 +21,20 @@ custom:
 functions:
   index:
     name: ${self:service}-api-index
-    description: List library images
+    description: Welcome message
     handler: serverless.index
     events:
       - http:
-          path: api
+          path: /
+          method: get
+
+  list:
+    name: ${self:service}-api-list
+    description: List library images
+    handler: serverless.list
+    events:
+      - http:
+          path: /api
           method: get
 
   show:
@@ -34,7 +43,7 @@ functions:
     handler: serverless.show
     events:
       - http:
-          path: api/{key}
+          path: /api/{key}
           method: get
 
   perform:
@@ -43,7 +52,7 @@ functions:
     handler: serverless.perform
     events:
       - http:
-          path: image/{key}
+          path: /image/{key}
           method: get
 
 plugins:

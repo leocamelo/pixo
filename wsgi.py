@@ -11,8 +11,13 @@ app.config.from_mapping(
 )
 
 
-@app.route('/api')
+@app.route('/')
 def index():
+    return jsonify(message='Welcome to Pyxo!')
+
+
+@app.route('/api')
+def list():
     return jsonify(images=get_images())
 
 

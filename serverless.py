@@ -10,6 +10,10 @@ def _response(status_code, body, **extras):
 
 
 def index(event, context):
+    return _response(200, {'message': 'Welcome to Pyxo!'})
+
+
+def list(event, context):
     return _response(200, {'images': get_images()})
 
 
