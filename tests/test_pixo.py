@@ -1,7 +1,7 @@
 from pixo import __version__, get_images, find_image, perform_image
 
 
-example = 'paper1'
+example = 'paper01'
 
 
 def test_version():

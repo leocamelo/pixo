@@ -1,6 +1,3 @@
-from PIL import ImageFont
-
-
 class Tag:
     def __init__(self, key, meta):
         self.key = key

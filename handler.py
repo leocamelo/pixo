@@ -1,10 +1,10 @@
-from json import dumps
+import json
 
 from pixo import get_images, find_image, perform_image
 
 
 def _response(status_code, body, **extras):
-    parsed_body = dumps(body) if type(body) is dict else body
+    parsed_body = json.dumps(body) if type(body) is dict else body
     return {'statusCode': status_code, 'body': parsed_body, **extras}
 
 
