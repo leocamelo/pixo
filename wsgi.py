@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, make_response
 
-from pixo import get_images, find_image, perform_image
+from pyxo import get_images, find_image, perform_image
 
 
 app = Flask(__name__)

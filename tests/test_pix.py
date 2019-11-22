@@ -1,6 +1,6 @@
 from pytest import raises
 
-from pixo.pix import Pix
+from pyxo.pix import Pix
 
 
 def test_as_json():

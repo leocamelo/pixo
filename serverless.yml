@@ -1,4 +1,4 @@
-service: pixo
+service: pyxo
 
 provider:
   name: aws

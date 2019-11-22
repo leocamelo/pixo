@@ -1,4 +1,4 @@
-from pixo.tag import Tag
+from pyxo.tag import Tag
 
 
 def test_as_json():

@@ -1,4 +1,4 @@
-from pixo import __version__, get_images, find_image, perform_image
+from pyxo import __version__, get_images, find_image, perform_image
 
 
 example = 'paper01'

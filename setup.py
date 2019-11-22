@@ -1,15 +1,15 @@
 from setuptools import setup, find_packages
 
-from pixo import __version__
+from pyxo import __version__
 
 
 setup(
-    name='pixo',
+    name='pyxo',
     version=__version__,
     description='Draw tags over your photos',
     license='MIT',
     author='@leocamelo',
     author_email='leonardocamelo.nave@gmail.com',
-    url='https://github.com/leocamelo/pixo',
+    url='https://github.com/leocamelo/pyxo',
     packages=find_packages()
 )

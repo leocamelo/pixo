@@ -1,7 +1,7 @@
 import json
 from base64 import b64encode
 
-from pixo import get_images, find_image, perform_image
+from pyxo import get_images, find_image, perform_image
 
 
 def _response(status_code, body, **extras):
