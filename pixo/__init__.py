@@ -4,8 +4,7 @@ from pathlib import Path
 from .pix import Pix
 
 
-with open('package.json') as f:
-    __version__ = json.load(f)['version']
+__version__ = '0.1.0'
 
 
 def _library():

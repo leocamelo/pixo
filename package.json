@@ -1,7 +1,4 @@
 {
-  "name": "pixo",
-  "description": "Draw tags over your photos",
-  "version": "0.1.0",
   "dependencies": {},
   "devDependencies": {
     "serverless-offline": "^5.12.0",
