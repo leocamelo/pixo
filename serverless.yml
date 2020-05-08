@@ -10,13 +10,19 @@ provider:
 
 package:
   exclude:
-    - venv/**
-    - tests/**
+    - ./**
+  include:
+    - ./pyxo/**
+    - ./library/**
+    - ./serverless.py
 
 custom:
   pythonRequirements:
     pythonBin: python3
     dockerizePip: true
+    noDeploy:
+      - flask
+      - gunicorn
 
 functions:
   index:
@@ -25,8 +31,8 @@ functions:
     handler: serverless.index
     events:
       - http:
-          path: /
           method: get
+          path: /api
 
   list:
     name: ${self:service}-api-list
@@ -34,8 +40,8 @@ functions:
     handler: serverless.list
     events:
       - http:
-          path: /api
           method: get
+          path: /api/images
 
   show:
     name: ${self:service}-api-show
@@ -43,8 +49,8 @@ functions:
     handler: serverless.show
     events:
       - http:
-          path: /api/{key}
           method: get
+          path: /api/images/{key}
 
   perform:
     name: ${self:service}-image
@@ -52,8 +58,8 @@ functions:
     handler: serverless.perform
     events:
       - http:
-          path: /image/{key}
           method: get
+          path: /image/{key}
 
 plugins:
   - serverless-python-requirements

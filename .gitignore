@@ -1,5 +1,5 @@
-.serverless/
-.pytest_cache/
-__pycache__/
-venv/
-node_modules/
+.serverless
+.pytest_cache
+__pycache__
+venv
+node_modules

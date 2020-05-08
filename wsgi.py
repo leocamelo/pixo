@@ -1,4 +1,3 @@
-from os import getenv
 from flask import Flask, request, jsonify, make_response
 
 from pyxo import get_images, find_image, perform_image
@@ -6,22 +5,18 @@ from pyxo import get_images, find_image, perform_image
 
 app = Flask(__name__)
 
-app.config.from_mapping(
-    SECRET_KEY=getenv('SECRET_KEY', 'Z1ON0101')
-)
 
-
-@app.route('/')
+@app.route('/api')
 def index():
     return jsonify(message='Welcome to Pyxo!')
 
 
-@app.route('/api')
+@app.route('/api/images')
 def list():
     return jsonify(images=get_images())
 
 
-@app.route('/api/<key>')
+@app.route('/api/images/<key>')
 def show(key):
     return jsonify(image=find_image(key))
 
