@@ -14,4 +14,5 @@ COPY setup.py wsgi.py ./
 RUN chown -R nobody:nobody ${HOME}
 USER nobody:nobody
 
-CMD ["gunicorn", "wsgi:app", "-b 0.0.0.0", "--preload"]
+EXPOSE 8000
+CMD ["gunicorn", "wsgi:app", "-b", "0.0.0.0", "--preload"]
